@@ -14,4 +14,4 @@ electron 설치및 빌드
 일렉트론 win64 스크립트 실행
 - npm run build:win64
 
-세부 설정은 package.json에 bulid 설정([옵션참고](https://www.electron.build/configuration/configuration, "옵션참고"))과 script 부분의 run build 참고
+세부 설정은 package.json에 bulid 설정([옵션참고](https://www.electron.build/configuration/configuration , "옵션참고"))과 script 부분의 run build 참고
