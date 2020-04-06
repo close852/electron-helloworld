@@ -1,14 +1,21 @@
 const electron = require('electron');
+const electronLocalshortcut = require('electron-localshortcut');
+
 // Module to control application life.
 const { app } = electron;
 // Module to create native browser window.
 const { BrowserWindow } = electron;
+
+//***//
+const globalShortcut = electron.globalShortcut
+//***//
+
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let win;
 function createWindow() {
     // Create the browser window.
-    win = new BrowserWindow({ width: 800, height: 600 });
+    win = new BrowserWindow({ width: 425, height: 667 });
     // and load the index.html of the app.
     win.loadURL(`file://${__dirname}/index.html`);
     // Emitted when the window is closed.
@@ -18,7 +25,22 @@ function createWindow() {
         // when you should delete the corresponding element.
         win = null;
     });
+
+    globalShortcut.register('f5', function () {
+        console.log('f5 is pressed')
+        win.reload()
+    })
+    globalShortcut.register('f9', function () {
+        console.log('f9 is pressed')
+        win.webContents.toggleDevTools();
+    })
+
+    electronLocalshortcut.register(win, 'f12', function () {
+        console.log('f12 is pressed')
+        win.webContents.toggleDevTools();
+    })
 }
+
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
